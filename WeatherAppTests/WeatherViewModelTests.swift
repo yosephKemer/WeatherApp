@@ -31,10 +31,10 @@ class WeatherViewModelTests: XCTestCase {
         // Given from the requirment, 
         let cityName = "London"
     
-        let weatherData = WeatherData(
-                    main: WeatherMain(temp: 20.0, humidity: 50),
-                    weather: [Weather(description: "Cloudy", icon: "04d")]
-                )
+//        let weatherData = WeatherData(
+//                    main: WeatherMain(temp: 20.0, humidity: 50),
+//                    weather: [Weather(description: "Cloudy", icon: "04d")]
+//                )
 
         // When
         viewModel.fetchWeatherData(cityName: cityName)
