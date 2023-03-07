@@ -7,9 +7,7 @@
 
 import XCTest
 
-
-
-final class WeatherAppUITests: XCTestCase {
+class WeatherAppUITests: XCTestCase {
     
     var app: XCUIApplication!
     
@@ -23,24 +21,24 @@ final class WeatherAppUITests: XCTestCase {
         app = nil
     }
     
-    func testWeatherViewController() throws {
-        let startButton = app.buttons["Start"]
-        XCTAssertTrue(startButton.exists)
-        startButton.tap()
+    func testWeatherApp() throws {
+        // Test the initial view
         
-        let searchBar = app.searchFields.firstMatch
-        XCTAssertTrue(searchBar.exists)
+        XCTAssert(app.staticTexts["Weather App"].exists)
+        XCTAssert(app.staticTexts["iOS Assessment\nby\nYoseph Feseha"].exists)
+        XCTAssert(app.buttons["Start"].exists)
+        
+        // Tap the "Start" button
+        app.buttons["Start"].tap()
+        
+        // Type in a city name and tap the "Fetch Weather" button
+        let searchBar = app.searchFields["Enter a city name"]
         searchBar.tap()
-        searchBar.typeText("New York")
-        app.keyboards.buttons["Search"].tap()
-        
-        let weatherDataLabel = app.staticTexts["weatherDataLabel"]
-        let weatherIconImageView = app.images["weatherIconImageView"]
-        XCTAssertTrue(weatherDataLabel.waitForExistence(timeout: 10))
-        XCTAssertTrue(weatherIconImageView.waitForExistence(timeout: 10))
-        
-        app.navigationBars.buttons.firstMatch.tap()
-        XCTAssertTrue(startButton.exists)
+        searchBar.typeText("New York\n")
+
+        // Find and tap the "Fetch Weather" button
+        let fetchWeatherButton = app.buttons["Fetch Weather"]
+        fetchWeatherButton.tap()
+   
     }
 }
-

@@ -12,7 +12,7 @@ struct MainView: View {
     
     var body: some View {
         VStack {
-            Image("chase ")
+            Image("chase")
                 .resizable()
                 .scaledToFit()
                 .frame(maxWidth: .infinity, maxHeight: 200)

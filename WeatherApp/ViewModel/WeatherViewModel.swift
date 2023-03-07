@@ -35,7 +35,9 @@ class WeatherViewModel {
         networkManager.getWeatherData(cityName: cityName) { [weak self] result in
             switch result {
             case .success(let weatherData):
+                //change Kelvin to Farehnit
                 let temp = String(format: "%.1f", 1.8 * (weatherData.main.temp - 273) + 32)
+                
                 self?.weatherDataText = "Temperature: \(temp)°F\nHumidity: \(weatherData.main.humidity)%\nWeather: \(weatherData.weather.first?.description ?? "")"
                 self?.errorText = nil
                 
